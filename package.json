@@ -6,7 +6,8 @@
   "scripts": {
     "test": "",
     "start": "node ./bin/server",
-    "dev": "nodemon ./bin/server"
+    "dev": "nodemon ./bin/server",
+    "folders":"mkdir config helpers models routes tests views"
   },
   "keywords": [],
   "author": "",
