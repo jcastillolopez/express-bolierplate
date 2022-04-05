@@ -4,8 +4,8 @@ const app = require('../app');
 // CONFIG.env
 require('dotenv').config();
 
-
-
+//conf base de datos
+require('../config/db.config');
 const serve = http.createServer(app);
 
 let PORT = process.env.PORT || 3000;
