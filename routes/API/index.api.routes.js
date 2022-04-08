@@ -7,5 +7,6 @@ router.use('/clientes', require('./api.clientes'));
 router.use('/inmuebles', require('./api.inmuebles'));
 router.use('/proveedores', require('./api.proveedores'));
 router.use('/usuarios', require('./api.usuarios'));
+router.use('/tipos', require('./Tipos/tipos.index'));
 
 module.exports = router;

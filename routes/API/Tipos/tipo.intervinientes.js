@@ -1,11 +1,12 @@
 const router = require('express').Router();
-const clienteModel = require('../../models/cliente.Model');
+const IntervinienteModel = require('../../../models/tipos/tipo.interviniente.Model');
 
 
 
 router.get('/', async (req, res) => {
+    
     try {
-        const [result] = await clienteModel.getAll();
+        const [result] = await RolModel.getAll();
         res.json(result);
     } catch (error) {// ejecuta esta
         res.json(error);
@@ -15,34 +16,35 @@ router.get('/', async (req, res) => {
 router.post('/registro', async (req, res) => {
     console.log(req.body);
     try {
-        const [result] = await clienteModel.create(req.body);
+        const [result] = await RolModel.create(req.body);
         res.json(result)
     } catch (error) {
         res.json(error);
     }
 });
-router.put('/:clienteId', async (req, res) => {
+router.put('/:tiposId', async (req, res) => {
       try {
-        const [result] = await clienteModel.update(req.params.clienteId, req.body);
+        const [result] = await RolModel.update(req.params.clienteId, req.body);
         res.json(result);
     } catch (error) {
         res.json(error);
     }
 });
-router.delete('/:clienteId', async (req, res) => {
+router.delete('/:tiposId', async (req, res) => {
     try {
-        const [result] = await clienteModel.deleteById(req.params.clienteId);
+        const [result] = await RolModel.deleteById(req.params.clienteId);
         res.json(result);
     } catch (error) {
         res.json(error);
     }
 });
-router.get('/:clienteId', async (req, res) => {
+router.get('/:tiposId', async (req, res) => {
     try {
-        const [result] = await clienteModel.getById(req.params.clienteId);
+        const [result] = await RolModel.getById(req.params.clienteId);
         res.json(result);
     } catch (error) {
         res.json(error);
     }
 });
+
 module.exports = router;

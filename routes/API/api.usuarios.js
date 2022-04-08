@@ -1,26 +1,51 @@
 const router = require('express').Router();
-const usuario = require('../../models/usuario.model');
+const usuarioModel = require('../../models/usuario.model');
 const bcrypt = require('bcryptjs');
 
-router.get('/', (req, res) => {
-    console.log(req.body)
-    res.send('API Usuarios');
 
+router.get('/', async (req, res) => {
+    try {
+        const [result] = await usuarioModel.getAll();
+        res.json(result);
+    } catch (error) {// ejecuta esta
+        res.json(error);
+    }
 });
 
 
 router.post('/registro', async (req, res) => {
-    res.json(req.body)
-    //const hash = bcrypt.hashSync(req.body.password, 12);
-    //req.body.password = hash;
     try {
-        const [nuevoUsuario] = await usuario.create(req.body);
-        //res.json(nuevoUsuario);
+        const [result] = await usuarioModel.create(req.body);
+        console.log(result);
+        res.json(result)
     } catch (error) {
-        //res.json(error);
+        res.json(error);
     }
 })
-
+router.put('/:usuarioId', async (req, res) => {
+    try {
+        const [result] = await usuarioModel.update(req.params.usuarioId, req.body);
+        res.json(result);
+    } catch (error) {
+        res.json(error);
+    }
+});
+router.delete('/:usuarioId', async (req, res) => {
+    try {
+        const [result] = await usuarioModel.deleteById(req.params.usuarioId);
+        res.json(result);
+    } catch (error) {
+        res.json(error);
+    }
+});
+router.get('/:usuarioId', async (req, res) => {
+    try {
+        const [result] = await usuarioModel.getById(req.params.usuarioId);
+        res.json(result);
+    } catch (error) {
+        res.json(error);
+    }
+});
 
 
 
