@@ -1,12 +1,12 @@
 const create = ({ alias, refcatastral,  localidad,direccion,cp }) => {
     return db.query(
-        'insert into inmuebles( alias, refcatastral,  localidad,direccion,cp  ) values(?,?,?,?,?)',[ alias, refcatastral,  localidad,direccion,cp  ]
+        'insert into inmuebles( alias, refcatastral,  localidad,direccion,cp,usuario_id  ) values(?,?,?,?,?,?)',[ alias, refcatastral,  localidad,direccion,cp,  usuario_id]
     )  
 }
-const update = (inmuebleId,{ alias, refcatastral,localidad,direccion,cp }) => {
+const update = (inmuebleId,{ alias, refcatastral,localidad,direccion,cp,usuario_id }) => {
     return db.query(
-        'UPDATE inmuebles set alias = ?, refcatastral = ? ,  localidad = ? ,direccion = ? ,cp = ?  WHERE id = ?',
-        [ alias, refcatastral, localidad,direccion,cp , inmuebleId]
+        'UPDATE inmuebles set alias = ?, refcatastral = ? ,  localidad = ? ,direccion = ? ,cp = ?,usuario_id = ?  WHERE id = ?',
+        [ alias, refcatastral, localidad,direccion,cp ,usuario_id, inmuebleId]
     );
 }
 const deleteById = (inmuebleId) => {

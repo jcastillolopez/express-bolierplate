@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const IntervinienteModel = require('../../../models/tipos/tipo.interviniente.Model');
+const IntervinienteModel = require('../../../models/contratos/contratosModel');
 
 
 

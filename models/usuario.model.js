@@ -2,15 +2,15 @@ const getAll = () => {
     return db.query('select usuarios.*, roles.rol from inmuebles_control.usuarios,inmuebles_control.roles where usuarios.rol_id = roles.id ')
 };
 
-const create = ({ username, email, password }) => {
+const create = ({ username, email, password, Roles_id}) => {
     return db.query(
-        'insert into usuarios(username,email,password) values(?,?,?)',[username,email,password]
+        'insert into usuarios(username,email,password,Roles_id) values(?,?,?,?)',[username,email,password,Roles_id]
     )
 }
-const update = (usuarioId,{  username, email, password }) => {
+const update = (usuarioId,{  username, email, password,Roles_id }) => {
     return db.query(
-        'UPDATE usuarios set username = ?, email = ? ,  password = ?  WHERE id = ?',
-        [ username, email, password, usuarioId]
+        'UPDATE usuarios set username = ?, email = ? ,  password = ?, Roles_id =? WHERE id = ?',
+        [ username, email, password,Roles_id, usuarioId]
     );
 }
 const deleteById = (usuarioId) => {

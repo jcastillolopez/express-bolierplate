@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
 });
 
 
-router.use('/intervinientes', require('./tipo.intervinientes'));
+router.use('/contratos', require('./tipos.contratos'));
 router.use('/rol', require('./tipo.rol'));
 
 module.exports = router;

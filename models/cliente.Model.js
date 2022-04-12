@@ -16,7 +16,7 @@ const getById = (clienteId) => {
     return db.query('select * from clientes where id = ?', [clienteId]);
 }
 const getAll = () => {
-    return db.query('select * from clientes')
+    return db.query('select * from clientes where borrado = 0 order by apellidos asc')
 };
 
 module.exports = { create, update,deleteById,getById,getAll};
