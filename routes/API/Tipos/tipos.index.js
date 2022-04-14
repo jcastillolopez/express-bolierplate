@@ -5,8 +5,10 @@ router.get('/', (req, res) => {
     res.send('index Api tipos');
 });
 
+router.use('/interviniente', require('./tipo.intervinientes'));
+router.use('/contrato', require('./tipo.contratos'));
+router.use('/rol', require('./tipo.roles'));
+router.use('/periodo', require('./tipo.periodos'));
 
-router.use('/contratos', require('./tipos.contratos'));
-router.use('/rol', require('./tipo.rol'));
 
 module.exports = router;

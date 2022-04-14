@@ -22,6 +22,7 @@ router.post('/registro', async (req, res) => {
     }
 });
 router.put('/:clienteId', async (req, res) => {
+    console.log (req.body)
       try {
         const [result] = await clienteModel.update(req.params.clienteId, req.body);
         res.json(result);

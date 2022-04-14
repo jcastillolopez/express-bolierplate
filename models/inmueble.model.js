@@ -1,6 +1,6 @@
-const create = ({ alias, refcatastral,  localidad,direccion,cp }) => {
+const create = ({ alias, refcatastral,localidad,direccion,cp }) => {
     return db.query(
-        'insert into inmuebles( alias, refcatastral,  localidad,direccion,cp,usuario_id  ) values(?,?,?,?,?,?)',[ alias, refcatastral,  localidad,direccion,cp,  usuario_id]
+        'insert into inmuebles( alias, refcatastral,  localidad,direccion,cp) values(?,?,?,?,?)',[ alias, refcatastral,localidad,direccion,cp]
     )  
 }
 const update = (inmuebleId,{ alias, refcatastral,localidad,direccion,cp,usuario_id }) => {
@@ -18,4 +18,7 @@ const getById = (inmuebleId) => {
 const getAll = () => {
     return db.query('select * from inmuebles')
 };
-module.exports = { create, update,deleteById,getById,getAll };
+const selectAlias = () => {
+    return db.query('select Distinct alias,refcatastral,id from inmuebles_control.inmuebles')
+}
+module.exports = { create, update,deleteById,getById,getAll, selectAlias};
