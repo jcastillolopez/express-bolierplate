@@ -13,10 +13,17 @@ const update = (proveedorId, { nombre, apellidos, email, nie, tlf, tlf_movil, lo
 const deleteById = (proveedorId) => {
     return db.query('delete from proveedores where id = ?', [proveedorId]);
 }
+
 const getById = (proveedorId) => {
     return db.query('select * from proveedores where id = ?', [proveedorId]);
 }
+
 const getAll = () => {
     return db.query('select * from proveedores where borrado =0 order by apellidos asc')
 };
+
+const selectProveedor = () => {
+    return db.query('select Distinct nie,apellidos,nombre,id from inmuebles_control.clientes')
+}
+
 module.exports = { create, update,deleteById,getById,getAll };

@@ -9,6 +9,6 @@ router.use('/interviniente', require('./tipo.intervinientes'));
 router.use('/contrato', require('./tipo.contratos'));
 router.use('/rol', require('./tipo.roles'));
 router.use('/periodo', require('./tipo.periodos'));
-
+router.use('/concepto', require('./tipo.concepto'));
 
 module.exports = router;

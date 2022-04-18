@@ -17,8 +17,10 @@ const getById = (clienteId) => {
     return db.query('select * from clientes where id = ?', [clienteId]);
 }
 const getAll = () => {
-    console.log('getAll')
+    
     return db.query("select * from clientes where borrado =0 order by apellidos asc")
 };
-
-module.exports = { create, update, deleteById, getById, getAll };
+const selectCliente = () => {
+    return db.query('select Distinct nie,apellidos,nombre,id from inmuebles_control.clientes')
+}
+module.exports = { create, update, deleteById, getById, getAll, selectCliente};

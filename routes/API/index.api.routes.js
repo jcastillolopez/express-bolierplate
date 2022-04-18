@@ -12,5 +12,6 @@ router.use('/usuarios', require('./api.usuarios'));
 router.use('/tipos', require('./Tipos/tipos.index'));
 router.use('/contratos', require('./api.contratos'));
 router.use('/intervinientes', require('./api.intervinientes'));
+router.use('/ingresos', require('./api.ingresos_gastos'));
 
 module.exports = router;

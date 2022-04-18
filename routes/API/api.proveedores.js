@@ -5,7 +5,17 @@ router.get('/', async (req, res) => {
     try {
         const [result] = await proveedorModel.getAll();
         res.json(result);
-    } catch (error) {// ejecuta esta
+    } catch (error) {
+        res.json(error);
+    }
+});
+router.get('/select', async (req, res) => {
+   
+    try {
+        const [result] = await proveedorModel.selectProveedor();
+        res.json(result); 
+        console.log(result)
+    } catch (error) {
         res.json(error);
     }
 });

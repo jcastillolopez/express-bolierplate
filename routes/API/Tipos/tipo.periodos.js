@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
 router.get('/select', async (req, res) => {
    
     try {
-        const [result] = await tipoPeriodosModel.select();
+        const [result] = await tipoPeriodosModel.selectPeriodo();
         res.json(result); 
         console.log(result)
     } catch (error) {

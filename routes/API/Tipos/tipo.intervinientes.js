@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
 router.get('/select', async (req, res) => {
    
     try {
-        const [result] = await tipoIntervinienteModel.select();
+        const [result] = await tipoIntervinienteModel.selectTipoInterviniente();
         res.json(result); 
         console.log(result)
     } catch (error) {// ejecuta esta

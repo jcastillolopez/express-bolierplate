@@ -18,7 +18,7 @@ const getById = (tipo_intervinienteId) => {
 const getAll = () => {
     return db.query('select * from tipos_intervinientes')
 };
-const select = () => {
+const selectTipoInterviniente = () => {
     return db.query('select Distinct tipo_interviniente,id from inmuebles_control.tipos_intervinientes')
 }
-module.exports = { create, update, deleteById, getById, getAll, select };
+module.exports = { create, update, deleteById, getById, getAll, selectTipoInterviniente};

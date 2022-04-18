@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
 router.get('/select', async (req, res) => {
    
     try {
-        const [result] = await inmueblesModel.selectAlias();
+        const [result] = await inmueblesModel.selectInmueble();
         res.json(result); 
         console.log(result)
     } catch (error) {// ejecuta esta

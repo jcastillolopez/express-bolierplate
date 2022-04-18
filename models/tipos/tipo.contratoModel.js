@@ -18,7 +18,7 @@ const getById = (tipo_contratoId) => {
 const getAll = () => {
     return db.query('select * from tipos_contratos')
 };
-const select = () => {
+const selectTipoContrato = () => {
     return db.query('select Distinct tipo_contrato,id from inmuebles_control.tipos_contratos')
 }
-module.exports = { create, update,deleteById,getById,getAll, select};
+module.exports = { create, update,deleteById,getById,getAll, selectTipoContrato};
