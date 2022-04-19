@@ -2,7 +2,7 @@ const router = require('express').Router();
 const ingresos_gastoModel = require('../../models/ingresos_gastos.Model')
 
 
-router.get('/', async (req, res) => {
+router.get('/', async (req, res) => {   
     try {
         const [result] = await ingresos_gastoModel.getAll();
         res.json(result);
@@ -10,13 +10,15 @@ router.get('/', async (req, res) => {
         res.json(error);
     }
 });
-router.post('/registro', async (req, res) => {
+router.post('/registro', async (req, res) => {   
     try {
         const [result] = await ingresos_gastoModel.create(req.body);
         res.json(result)
+        console.log(result)
     } catch (error) {
         res.json(error);
     }
+    
 })
 router.put('/:ingreso_gastoId', async (req, res) => {
     console.log(req.body);

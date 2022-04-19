@@ -1,11 +1,11 @@
-const create = ({concepto,fecha_concepto,ingreso,gasto,proveedores_id,inmuebles_id,fecha_factura,numero_factura,usuario_id,borrado }) => {
+const create = ({concepto,tipo_concepto_id,fecha_concepto,ingreso,gasto,iva_porcentaje ,proveedores_id,inmuebles_id,fecha_factura,numero_factura,usuario_id,borrado }) => {
     return db.query(
-        'insert into gastos_ingresos(concepto,fecha_concepto,ingreso,gasto,proveedores_id,inmuebles_id,fecha_factura,numero_factura,usuario_id,borrado ) values(?,?,?,?,?,?,?,?,?,?)', [concepto,fecha_concepto,ingreso,gasto,proveedores_id,inmuebles_id,fecha_factura,numero_factura,usuario_id,borrado]
+        'insert into gastos_ingresos(concepto,tipo_concepto_id,fecha_concepto,ingreso,gasto,iva_porcentaje ,proveedores_id,inmuebles_id,fecha_factura,numero_factura,usuario_id,borrado ) values(?,?,?,?,?,?,?,?,?,?,?,?)', [concepto,tipo_concepto_id,fecha_concepto,ingreso,gasto,iva_porcentaje ,proveedores_id,inmuebles_id,fecha_factura,numero_factura,usuario_id,borrado]
     )
 }
-const update = ({ concepto,fecha_concepto,ingreso,gasto,proveedores_id,inmuebles_id,fecha_factura,numero_factura,usuario_id,borrado}, ingreso_gastoId) => {
+const update = ({ concepto,fecha_concepto,ingreso,gasto, iva_porcentaje,proveedores_id,inmuebles_id,fecha_factura,numero_factura,usuario_id,borrado}, ingreso_gastoId) => {
     return db.query(
-        'update gastos_ingresos set concepto = ? ,fecha_concepto = ? ,ingreso id = ?,gasto id = ?,proveedores_id  = ?,inmuebles_id  = ?,fecha_factura = ?,numero_factura  = ?, usuario_id  = ? , borrado = ? where id = ?', [concepto,fecha_concepto,ingreso,gasto,proveedores_id,inmuebles_id,fecha_factura,numero_factura,usuario_id,borrado,ingreso_gastoId ]
+        'update gastos_ingresos set concepto = ? ,fecha_concepto = ? ,ingreso id = ?,gasto id = ?,iva_porcentaje = ?, proveedores_id  = ?,inmuebles_id  = ?,fecha_factura = ?,numero_factura  = ?, usuario_id  = ? , borrado = ? where id = ?', [concepto,fecha_concepto,ingreso,gasto, iva_porcentaje,proveedores_id,inmuebles_id,fecha_factura,numero_factura,usuario_id,borrado,ingreso_gastoId ]
     )
 }
 const deleteById = (ingreso_gastoId) => {
