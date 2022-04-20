@@ -51,6 +51,7 @@ router.delete('/:clienteId', async (req, res) => {
 router.get('/:clienteId', async (req, res) => {
     try {
         const [result] = await clienteModel.getById(req.params.clienteId);
+        
         res.json(result);
     } catch (error) {
         res.json(error);

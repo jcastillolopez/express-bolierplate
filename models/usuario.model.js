@@ -19,4 +19,7 @@ const deleteById = (usuarioId) => {
 const getById = (usuarioId) => {
     return db.query('select usuarios.*, roles.rol from inmuebles_control.usuarios,inmuebles_control.roles where usuarios.rol_id = roles.id and usuarios.id=?', [usuarioId]);
 }
-module.exports = {getAll, create, update,deleteById,getById };
+const selectLogin = (pemail) => {
+    return db.query('select * from inmuebles_control.usuarios where borrado = 0 and email = ? ',[pemail]);
+}
+module.exports = {getAll, create, update,deleteById,getById, selectLogin};

@@ -21,4 +21,7 @@ const getAll = () => {
 const selectInmueble = () => {
     return db.query('select Distinct alias,refcatastral,id from inmuebles_control.inmuebles')
 }
-module.exports = { create, update,deleteById,getById,getAll, selectInmueble};
+const getByUsuario = (usuarioId) => {
+    return db.query('select * from inmuebles where usuario_id = ?', [usuarioId]);
+}
+module.exports = { create, update,deleteById,getById,getAll,getByUsuario,selectInmueble};

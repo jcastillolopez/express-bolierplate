@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const usuarioModel = require('../../models/usuario.model');
+const administradorModel = require('../../models/administradores.Model');
 const bcrypt = require('bcryptjs');
 
 
 router.get('/', async (req, res) => {
     try {
-        const [result] = await usuarioModel.getAll();
+        const [result] = await administradorModel.getAll();
         res.json(result);
     } catch (error) {// ejecuta esta
         res.json(error);
@@ -15,32 +15,36 @@ router.get('/', async (req, res) => {
 
 router.post('/registro', async (req, res) => {
     try {
-        const [result] = await usuarioModel.create(req.body);
-        console.log(result);
-        res.json(result)
+        const [result] = await administradorModel.create(req.body);
+        if (result[0].email === req.body.email) {
+            return res.json({ exito: false, data: [], mensaje: "los datos ya existen" })
+           
+        } else {
+            return res.json({ exito: true, data: result[0] });
+        }
     } catch (error) {
         res.json(error);
     }
 })
-router.put('/:usuarioId', async (req, res) => {
+router.put('/:administradorId', async (req, res) => {
     try {
-        const [result] = await usuarioModel.update(req.params.usuarioId, req.body);
+        const [result] = await administradorModel.update(req.params.administradorId, req.body);
         res.json(result);
     } catch (error) {
         res.json(error);
     }
 });
-router.delete('/:usuarioId', async (req, res) => {
+router.delete('/:administradorId', async (req, res) => {
     try {
-        const [result] = await usuarioModel.deleteById(req.params.usuarioId);
+        const [result] = await administradorModel.deleteById(req.params.administradorId);
         res.json(result);
     } catch (error) {
         res.json(error);
     }
 });
-router.get('/:usuarioId', async (req, res) => {
+router.get('/:administradorId', async (req, res) => {
     try {
-        const [result] = await usuarioModel.getById(req.params.usuarioId);
+        const [result] = await administradorModel.getById(req.params.administradorId);
         res.json(result)
     } catch (error) {
         res.json(error);
@@ -49,7 +53,7 @@ router.get('/:usuarioId', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     try {
-        const [result] = await usuarioModel.selectLogin(req.body.email);
+        const [result] = await administradorModel.selectLogin(req.body.email);
 
         if (result.length === 0) {
             return res.json({ exito: false, data: [], mensaje: "el usuario no existe" })

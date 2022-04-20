@@ -3,22 +3,20 @@ const RolModel = require('../../../models/Tipos/tipos.Rol.Model');
 
 
 
-router.get('/', async (req, res) => {
-    
+router.get('/', async (req, res) => {      
     try {
         const [result] = await RolModel.getAll();
         res.json(result);
-    } catch (error) {// ejecuta esta
+    } catch (error) {
         res.json(error);
     }
  });
- router.get('/select', async (req, res) => {
-   
-    try {
-        const [result] = await RolModel.select();
+router.get('/select', async (req, res) => {      
+   try {
+        const [result] = await RolModel.selectRol();
         res.json(result); 
         console.log(result)
-    } catch (error) {// ejecuta esta
+    } catch (error) {
         res.json(error);
     }
 });

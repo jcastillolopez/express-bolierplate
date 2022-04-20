@@ -10,13 +10,21 @@ router.get('/', async (req, res) => {
     }
 });
  
-router.get('/select', async (req, res) => {
-   
+router.get('/select', async (req, res) => {   
     try {
         const [result] = await inmueblesModel.selectInmueble();
         res.json(result); 
         console.log(result)
     } catch (error) {// ejecuta esta
+        res.json(error);
+    }
+});
+router.get('/usuario/:usuario_id', async (req, res) => {   
+    try {
+        const [result] = await inmueblesModel.getByUsuario(req.params.usuario_id);
+        res.json(result); 
+        console.log(result)
+    } catch (error) {
         res.json(error);
     }
 });

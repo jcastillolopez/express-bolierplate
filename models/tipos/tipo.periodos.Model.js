@@ -6,7 +6,7 @@ const create = ({tipo_periodo,borrado,usuario_id }) => {
 const update = ({ tipo_periodo,borrado,usuario_id  }, tipo_periodoId) => {
     return db.query(
         'UPDATE tipos_periodos set tipo_periodo = ?,borrado= ? ,usuario_id = ?  WHERE id = ?',
-        [tipo_periodo,,borrado,usuario_id,tipo_periodoId]
+        [tipo_periodo,borrado,usuario_id,tipo_periodoId]
     );
 }
 const deleteById = (tipo_periodoId) => {
