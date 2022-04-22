@@ -48,6 +48,7 @@ router.get('/:usuarioId', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
+    console.log(req.body)
     try {
         const [result] = await usuarioModel.selectLogin(req.body.email);
 

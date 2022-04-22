@@ -17,8 +17,7 @@ router.post('/registro', async (req, res) => {
     try {
         const [result] = await administradorModel.create(req.body);
         if (result[0].email === req.body.email) {
-            return res.json({ exito: false, data: [], mensaje: "los datos ya existen" })
-           
+            return res.json({ exito: false, data: [], mensaje: "los datos ya existen" })           
         } else {
             return res.json({ exito: true, data: result[0] });
         }

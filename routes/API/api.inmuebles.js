@@ -19,7 +19,8 @@ router.get('/select', async (req, res) => {
         res.json(error);
     }
 });
-router.get('/usuario/:usuario_id', async (req, res) => {   
+router.get('/usuario/:usuario_id', async (req, res) => { 
+    
     try {
         const [result] = await inmueblesModel.getByUsuario(req.params.usuario_id);
         res.json(result); 
