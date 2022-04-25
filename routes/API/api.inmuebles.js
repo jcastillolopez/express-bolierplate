@@ -31,8 +31,9 @@ router.get('/usuario/:usuario_id', async (req, res) => {
 });
 
 router.post('/registro',async (req, res) => {
-    console.log(req.body);
+    
     try {
+        req.body.borrado = req.body.borrado? 1 : 0
         const [result] = await inmueblesModel.create(req.body);
         res.json(result)
     } catch (error) {
@@ -40,7 +41,8 @@ router.post('/registro',async (req, res) => {
     }
 })
 router.put('/:inmuebleId', async (req, res) => {
-      try {
+    try {
+        req.body.borrado = req.body.borrado? 1 : 0
         const [result] = await inmueblesModel.update(req.params.inmuebleId, req.body);
         res.json(result);
     } catch (error) {

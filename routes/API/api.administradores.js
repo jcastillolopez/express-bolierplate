@@ -15,6 +15,7 @@ router.get('/', async (req, res) => {
 
 router.post('/registro', async (req, res) => {
     try {
+        req.body.borrado = req.body.borrado? 1 : 0
         const [result] = await administradorModel.create(req.body);
         if (result[0].email === req.body.email) {
             return res.json({ exito: false, data: [], mensaje: "los datos ya existen" })           
@@ -27,6 +28,7 @@ router.post('/registro', async (req, res) => {
 })
 router.put('/:administradorId', async (req, res) => {
     try {
+        req.body.borrado = req.body.borrado? 1 : 0
         const [result] = await administradorModel.update(req.params.administradorId, req.body);
         res.json(result);
     } catch (error) {

@@ -21,8 +21,8 @@ router.get('/select', async (req, res) => {
     }
 });
 router.post('/registro', async (req, res) => {
-    console.log(req.body);
     try {
+        req.body.borrado = req.body.borrado? 1 : 0   
         const [result] = await RolModel.create(req.body);
         res.json(result)
     } catch (error) {
@@ -30,7 +30,8 @@ router.post('/registro', async (req, res) => {
     }
 });
 router.put('/:RolesId', async (req, res) => {
-      try {
+    try {
+        req.body.borrado = req.body.borrado? 1 : 0
         const [result] = await RolModel.update(req.params.RolesId, req.body);
         res.json(result);
     } catch (error) {

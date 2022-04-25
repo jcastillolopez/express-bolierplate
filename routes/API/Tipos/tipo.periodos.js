@@ -22,8 +22,8 @@ router.get('/select', async (req, res) => {
 });
 
 router.post('/registro',async (req, res) => {
-    console.log(res.body);
     try {
+        req.body.borrado = req.body.borrado? 1 : 0   
         const [result] = await tipoPeriodosModel.create(req.body);
         res.json(result)
     } catch (error) {
@@ -31,7 +31,8 @@ router.post('/registro',async (req, res) => {
     }
 })
 router.put('/:tipo_PeriodoId', async (req, res) => {
-      try {
+    try {
+        req.body.borrado = req.body.borrado? 1 : 0
         const [result] = await tipoPeriodosModel.update(req.params.tipo_PeriodoId, req.body);
         res.json(result);
     } catch (error) {

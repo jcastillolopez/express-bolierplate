@@ -21,9 +21,9 @@ router.get('/select', async (req, res) => {
     }
 });
 
-router.post('/registro',async (req, res) => {
-    console.log(req.body);
+router.post('/registro',async (req, res) => {    
     try {
+        req.body.borrado = req.body.borrado? 1 : 0
         const [result] = await tipoIntervinienteModel.create(req.body);
         res.json(result)
     } catch (error) {
@@ -31,7 +31,8 @@ router.post('/registro',async (req, res) => {
     }
 })
 router.put('/:tipo_intervinienteId', async (req, res) => {
-      try {
+    try {
+        req.body.borrado = req.body.borrado? 1 : 0
         const [result] = await tipoIntervinienteModel.update(req.params.tipo_intervinienteId, req.body);
         res.json(result);
     } catch (error) {

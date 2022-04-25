@@ -13,6 +13,7 @@ router.get('/', async (req, res) => {
 
 router.post('/registro', async (req, res) => {  
     try {
+        req.body.borrado = req.body.borrado? 1 : 0
         const [result] = await contratosModel.create(req.body);
         res.json(result)
     } catch (error) {
@@ -20,7 +21,8 @@ router.post('/registro', async (req, res) => {
     }
 });
 router.put('/:contratosId', async (req, res) => {
-      try {
+    try {
+        req.body.borrado = req.body.borrado? 1 : 0  
         const [result] = await contratosModel.update(req.body,req.params.contratosId);
         res.json(result);
     } catch (error) {

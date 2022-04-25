@@ -1,10 +1,12 @@
 const create = ({ nombre, apellidos, nie, fecha_nacimiento, email, tlf, tlf_movil, localidad, direccion, cp }) => {
+    (borrado !== true? 0:1) 
     return db.query(
         'insert into clientes(nombre, apellidos,nie,fecha_nacimiento, email, tlf,tlf_movil,localidad,direccion,cp ) values(?,?,?,?,?,?,?,?,?,?)', [nombre, apellidos, nie, fecha_nacimiento, email, tlf, tlf_movil, localidad, direccion, cp]
     )
 }
 const update = (clienteId, { nombre, apellidos, nie, fecha_nacimiento, email, tlf, tlf_movil, localidad, direccion, cp, borrado }) => {
-    (borrado !== true? 0:1) 
+    (borrado !== true ? 0 : 1) 
+    console.log( req.body)
     return db.query(
         'UPDATE clientes set nombre = ?, apellidos = ?,nie=?,fecha_nacimiento = ?, email = ?,tlf=?,tlf_movil=?,localidad=?, direccion = ?,cp = ?,borrado =? WHERE id = ?',
         [nombre, apellidos, nie, fecha_nacimiento, email, tlf, tlf_movil, localidad, direccion, cp,borrado, clienteId]

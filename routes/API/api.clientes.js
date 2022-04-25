@@ -23,8 +23,8 @@ router.get('/select', async (req, res) => {
 });
 
 router.post('/registro', async (req, res) => {
-    console.log(req.body);
     try {
+        req.body.borrado = req.body.borrado? 1 : 0 
         const [result] = await clienteModel.create(req.body);
         res.json(result)
     } catch (error) {
@@ -32,9 +32,11 @@ router.post('/registro', async (req, res) => {
     }
 });
 router.put('/:clienteId', async (req, res) => {
-    console.log (req.body)
-      try {
+    console.log(res.body)
+    try {
+        req.body.borrado = req.body.borrado? 1 : 0  
         const [result] = await clienteModel.update(req.params.clienteId, req.body);
+        
         res.json(result);
     } catch (error) {
         res.json(error);

@@ -12,6 +12,7 @@ router.get('/', async (req, res) => {
 });
 router.post('/registro', async (req, res) => {
     try {
+        req.body.borrado = req.body.borrado? 1 : 0
         const [result] = await intervinientesModel.create(req.body);
         res.json(result)
     } catch (error) {
@@ -19,8 +20,8 @@ router.post('/registro', async (req, res) => {
     }
 })
 router.put('/:intervinienteId', async (req, res) => {
-    console.log(req.body);
     try {
+        req.body.borrado = req.body.borrado? 1 : 0
         const [result] = await intervinientesModel.update(req.params.intervinienteId, req.body);
         res.json(result);
     } catch (error) {
